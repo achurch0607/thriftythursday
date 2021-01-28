@@ -73,6 +73,11 @@ class ControllerAccountRegister extends Controller {
 			$data['error_email'] = '';
 		}
 
+		if (isset($this->error['telephone'])) {
+			$data['error_telephone'] = $this->error['telephone'];
+		} else {
+			$data['error_telephone'] = '';
+		}
 
 		if (isset($this->error['custom_field'])) {
 			$data['error_custom_field'] = $this->error['custom_field'];
@@ -132,6 +137,12 @@ class ControllerAccountRegister extends Controller {
 			$data['email'] = '';
 		}
 
+		if (isset($this->request->post['telephone'])) {
+			$data['telephone'] = $this->request->post['telephone'];
+		} else {
+			$data['telephone'] = '';
+		}
+
 		// Custom Fields
 		$data['custom_fields'] = array();
 		
@@ -163,6 +174,11 @@ class ControllerAccountRegister extends Controller {
 			$data['confirm'] = '';
 		}
 
+		if (isset($this->request->post['newsletter'])) {
+			$data['newsletter'] = $this->request->post['newsletter'];
+		} else {
+			$data['newsletter'] = '';
+		}
 
 		// Captcha
 		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('register', (array)$this->config->get('config_captcha_page'))) {
